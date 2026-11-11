@@ -6,7 +6,7 @@ figspec turns a YAML description into publication-ready figures and tells you
 when a figure would fail a journal's or a reader's expectations.
 
 ```bash
-pip install figspec
+pip install "git+https://github.com/sw176267788/FigSpec.git"
 figspec init my-paper
 figspec render my-paper/figure.yaml -o figures
 ```

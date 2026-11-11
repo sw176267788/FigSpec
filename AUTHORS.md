@@ -1,26 +1,29 @@
 # Authors
 
-figspec is maintained by its contributors.
+figspec is maintained by its contributors. `LICENSE`, `CITATION.cff` and
+`pyproject.toml` currently use the neutral entity name **The figspec Authors**;
+replace it with your own name if you prefer a personal attribution.
 
 ## Maintainer
 
-- **Your Name** — project lead, design and implementation.
-  Replace this entry (and `CITATION.cff`) with your own details before publishing.
+- **Maintainer** — project lead, design and implementation.
+  Add your name here, or remove this section if you publish under the project
+  name only.
 
 ## Contributors
 
 Contributions are recorded in the git history. Add yourself here when your first
 pull request is merged:
 
-- *Your Name* — area of contribution
+- *Name* — area of contribution
 
-## Personalising this project
+## Attribution checklist
 
-If you are submitting figspec as your own project, update:
+If you fork figspec into your own project, update:
 
-1. `CITATION.cff` — author name, ORCID, affiliation.
-2. `pyproject.toml` — `authors`, project URLs.
-3. `LICENSE` — copyright holder.
-4. `README.md` / `README.zh-CN.md` — repository and documentation links.
-5. `.github/ISSUE_TEMPLATE/config.yml` — contact links.
-6. `CODE_OF_CONDUCT.md` and `SECURITY.md` — contact addresses.
+1. `LICENSE` — copyright holder.
+2. `CITATION.cff` — `authors` (and optionally an ORCID).
+3. `pyproject.toml` — `authors`, project URLs.
+4. `README.md` / `README.zh-CN.md` — badges and repository links.
+5. `mkdocs.yml` — `site_url`, `repo_url`, `repo_name`.
+6. `.github/ISSUE_TEMPLATE/config.yml` — contact links.

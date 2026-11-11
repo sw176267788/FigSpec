@@ -2,8 +2,18 @@
 
 ## Install
 
+figspec is not on PyPI yet; install it from the repository:
+
 ```bash
-pip install figspec
+pip install "git+https://github.com/sw176267788/FigSpec.git"
+```
+
+or, for development, clone it and install the editable package:
+
+```bash
+git clone https://github.com/sw176267788/FigSpec.git
+cd FigSpec
+pip install -e ".[dev]"
 ```
 
 Python 3.10+ is required. The only runtime dependencies are matplotlib, numpy,
@@ -123,7 +133,7 @@ outcome.close()
 ## Use it in CI
 
 ```yaml
-- run: pip install figspec
+- run: pip install "git+https://github.com/sw176267788/FigSpec.git"
 - run: figspec render figures/summary.yaml -o build --strict --fail-on warning
 - run: figspec verify build/summary.figspec.json
 ```

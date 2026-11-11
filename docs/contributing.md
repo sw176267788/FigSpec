@@ -1,12 +1,12 @@
 # Contributing to figspec
 
 Thanks for considering a contribution. This page is the practical guide; the
-repository-wide rules are in [CONTRIBUTING.md](https://github.com/figspec/figspec/blob/main/CONTRIBUTING.md).
+repository-wide rules are in [CONTRIBUTING.md](https://github.com/sw176267788/FigSpec/blob/main/CONTRIBUTING.md).
 
 ## Set up
 
 ```bash
-git clone https://github.com/figspec/figspec
+git clone https://github.com/sw176267788/FigSpec
 cd figspec
 python -m venv .venv
 # Windows: .venv\Scripts\activate    Unix: source .venv/bin/activate
@@ -108,5 +108,5 @@ versions; assert on structure and properties instead.
 
 ## Code of conduct
 
-Participation is governed by [CODE_OF_CONDUCT.md](https://github.com/figspec/figspec/blob/main/CODE_OF_CONDUCT.md).
+Participation is governed by [CODE_OF_CONDUCT.md](https://github.com/sw176267788/FigSpec/blob/main/CODE_OF_CONDUCT.md).
 Be kind; assume good faith; critique the code, not the person.

@@ -1,8 +1,8 @@
 site_name: figspec
 site_description: Declarative, publication-ready, reproducible scientific figures.
-site_url: https://figspec.github.io/figspec/
-repo_url: https://github.com/figspec/figspec
-repo_name: figspec/figspec
+site_url: https://sw176267788.github.io/FigSpec/
+repo_url: https://github.com/sw176267788/FigSpec
+repo_name: sw176267788/FigSpec
 edit_uri: edit/main/docs/
 copyright: Copyright &copy; 2026 The figspec Authors
 
@@ -36,6 +36,7 @@ theme:
 nav:
   - Home: index.md
   - Quickstart: quickstart.md
+  - Gallery: gallery.md
   - Spec reference: spec-reference.md
   - Journal presets: journals.md
   - Lint rules: lint-rules.md
@@ -43,7 +44,9 @@ nav:
   - CLI: cli.md
   - Recipes: recipes.md
   - Architecture: architecture.md
+  - FAQ: faq.md
   - Contributing: contributing.md
+  - 项目概览（中文）: project-overview.zh-CN.md
 
 markdown_extensions:
   - admonition

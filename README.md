@@ -1,94 +1,123 @@
 <div align="center">
 
-<img src="docs/assets/hero.png" alt="Six figures rendered from YAML specs by figspec" width="760">
+<img src="docs/assets/hero.png" alt="Six publication figures rendered from YAML specs by figspec" width="780">
 
 # figspec
 
 **Figures as code: declarative, journal-compliant, reproducible.**
 
-[![CI](https://github.com/figspec/figspec/actions/workflows/ci.yml/badge.svg)](https://github.com/figspec/figspec/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](pyproject.toml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Docs](https://img.shields.io/badge/docs-figspec.github.io-1f6feb.svg)](docs/index.md)
+[![CI](https://github.com/sw176267788/FigSpec/actions/workflows/ci.yml/badge.svg)](https://github.com/sw176267788/FigSpec/actions/workflows/ci.yml)
+[![Docs](https://github.com/sw176267788/FigSpec/actions/workflows/docs.yml/badge.svg)](https://sw176267788.github.io/FigSpec/)
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-3776ab.svg)](pyproject.toml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
+[![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)](CHANGELOG.md)
 
 </div>
 
----
-
-figspec compiles a small YAML file into publication-ready figures. It knows how
-wide a Nature single column is, how small a 5 pt label renders, and which colour
-pairs disappear under deuteranopia — so you do not have to re-learn that for
-every submission.
+A figure is a build artefact, but most labs still treat it as a file somebody
+tweaked by hand. **figspec** compiles a small YAML file into submission-ready
+figures: it knows how wide a Nature single column is, how small a 5 pt label
+renders, and which colour pairs disappear for colour-blind readers — so you do
+not have to re-learn that for every journal.
 
 ```bash
-pip install figspec
-figspec init my-paper && figspec render my-paper/figure.yaml -o figures
+figspec render figure.yaml -o figures     # → figures/figure.{pdf,svg,png}
+figspec lint   figure.yaml --journal nature
+figspec verify figures/figure.figspec.json
 ```
 
-That produces `figures/figure.pdf`, `figure.svg`, `figure.png` — plus a
-provenance manifest that lets anyone verify the figure later.
+> **Status:** v0.1.0 (alpha). The spec, renderer, linter, manifest and CLI are
+> usable and covered by 138 tests. The public API may change in minor releases
+> until v1.0. Roadmap below.
 
-## Why
+## Contents
 
-A figure is a build artefact, but most labs treat it as a file someone tweaked by
-hand. The symptoms are familiar:
+- [Why figspec](#why-figspec)
+- [Features](#features)
+- [Installation](#installation)
+- [Quick start](#quick-start)
+- [The spec format](#the-spec-format)
+- [Journal presets](#journal-presets)
+- [Linting](#linting)
+- [Reproducible builds](#reproducible-builds)
+- [CLI](#cli)
+- [Python API](#python-api)
+- [Repository layout](#repository-layout)
+- [How it compares](#how-it-compares)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Citation](#citation)
+- [License](#license)
 
-- every journal requires a different column width, font size and DPI, and the
-  numbers live in a style guide nobody reads until revision;
-- figures are rebuilt by re-running a notebook with different matplotlib
-  defaults, so two runs of "the same" plot are not the same file;
-- colour choices silently exclude colour-blind readers, or vanish in print;
-- six months later nobody can tell which CSV produced which panel.
+## Why figspec
 
-figspec addresses these as engineering problems: a schema, a compiler, a linter
+If you have prepared a paper, you have met these:
+
+- **Every journal wants different numbers.** Column width, font size, line weight
+  and DPI live in a submission guide nobody reads until revision. A figure that
+  looked fine at 5 inches is unreadable at 3.5.
+- **"The same plot" is never the same file.** Re-running a notebook with updated
+  matplotlib defaults produces a visually similar figure and an entirely
+  different file, so nobody can prove which one is in the PDF.
+- **Colour fails silently.** About 8% of men cannot separate red from green, and
+  pale hues vanish in print or greyscale.
+- **Figures drift from their data.** Six months later, no one knows which CSV or
+  which commit produced panel (c).
+
+figspec treats all four as engineering problems: a schema, a compiler, a linter
 and a manifest.
 
 ## Features
 
-- **Declarative specs.** One YAML file describes size, axes, series, legends,
-  annotations and panel layout. Diffable, reviewable, and easy to generate from
-  a script.
-- **Journal presets.** Eight bundled presets (Nature, Science, Cell, IEEE, ACM,
-  Elsevier, Springer, PLOS) plus `--journal-file` for your own.
-- **Compliance linting.** 18 rules check font sizes at final print size, line
-  weights, colour contrast (WCAG 2.1), colour-vision-deficiency separation
-  (CIEDE2000 on simulated dichromacy), DPI, legend and axis labelling, rainbow
-  colormaps and truncated bar axes.
-- **Reproducible output.** PDF, SVG, PNG and EPS are byte-identical across runs
-  in the same environment; timestamps and random ids are stripped.
-- **Provenance manifests.** Every build records input hashes, versions, spec
-  hash, output hashes and git state. `figspec verify` detects drift.
-- **Multi-panel figures.** Shared axes, letters `(a)`–`(d)`, per-panel legends.
-- **CI-ready.** `figspec lint --format sarif` and `figspec render --strict` turn
-  figure quality into a build gate.
+- **Declarative specs.** Size, axes, series, legends, annotations and panel
+  layout live in one YAML/JSON file — diffable, reviewable, generatable.
+- **8 journal presets.** Nature, Science, Cell, IEEE, ACM, Elsevier, Springer and
+  PLOS, plus `--journal-file` for your own.
+- **18 lint rules.** Minimum type size at final print size, stroke weights, WCAG
+  contrast, colour-vision separation (CIEDE2000 on simulated dichromacy), DPI,
+  legends, axis labels, rainbow colormaps and truncated bar axes.
+- **Byte-reproducible output.** PDF, SVG, PNG and EPS are identical across runs in
+  the same environment; timestamps and random ids are stripped.
+- **Provenance manifests.** Input hashes, versions, output hashes and git state
+  recorded on every build; `figspec verify` detects drift.
+- **Multi-panel figures.** Explicit or automatic grids, shared axes, `(a)`–`(d)`
+  labels, per-panel legends.
+- **CI-ready.** `--strict`, `--fail-on`, JSON and SARIF 2.1.0 output turn figure
+  quality into a build gate.
 - **Library first.** The CLI is a thin shell over a typed Python API.
 
-## Install
+## Installation
+
+figspec is not on PyPI yet. Install from the repository:
 
 ```bash
-pip install figspec
+pip install "git+https://github.com/sw176267788/FigSpec.git"
 ```
 
-From source:
+or work on a clone:
 
 ```bash
-git clone https://github.com/figspec/figspec
-cd figspec
+git clone https://github.com/sw176267788/FigSpec.git
+cd FigSpec
+python -m venv .venv
+# Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate
 pip install -e ".[dev]"
-pytest
+pytest -q
 ```
 
-Requires Python 3.10+ and matplotlib 3.7+. No LaTeX, no browser, no network.
+Requires **Python 3.10+** and matplotlib 3.7+. Runtime dependencies are
+matplotlib, numpy, PyYAML and click. No LaTeX, no browser, no network access.
 
-## Quickstart
+## Quick start
 
 ```bash
-figspec init my-paper          # figure.yaml + data/loss.csv
+figspec init my-paper                     # figure.yaml + data/loss.csv
 figspec render my-paper/figure.yaml -o figures
-figspec lint  my-paper/figure.yaml --journal nature
+figspec lint   my-paper/figure.yaml --journal nature
 ```
 
-`render` prints what it wrote, the lint summary and the manifest path:
+`render` reports what it wrote, what the linter thought, and where the manifest
+is:
 
 ```
   [ok] figure.pdf                23.1 KiB
@@ -109,12 +138,12 @@ meta:
   tags: [deep-learning, training]
 
 figure:
-  journal: nature        # column grid, fonts, DPI and min sizes come from here
+  journal: nature        # column grid, fonts, DPI and minimum sizes come from here
   layout: single         # single | 1.5 | double | custom
   formats: [pdf, svg, png]
 
 style:
-  palette: okabe-ito     # colour-blind safe, first five colours clear 3:1
+  palette: okabe-ito     # colour-blind safe; first five colours clear 3:1
   grid: true
 
 axes:
@@ -131,17 +160,37 @@ series:
     markersize: 2.2
 ```
 
-Series types: `line`, `scatter`, `bar`, `box`, `errorbar`, `area`, `heatmap`.
-Data can come from CSV, TSV, JSON, `.npy`/`.npz`, or be written inline.
+Seven series types: `line`, `scatter`, `bar`, `box`, `errorbar`, `area` and
+`heatmap`. Data comes from CSV, TSV, JSON, `.npy`/`.npz`, or inline arrays.
+Specs can share a base through `extends` and read `${ENV}` variables.
 
-The full schema, including panels, annotations, error bands, log axes and
-colour bars, is documented in [docs/spec-reference.md](docs/spec-reference.md).
+The complete reference — every key, every default — is in
+**[docs/spec-reference.md](docs/spec-reference.md)**.
+
+## Journal presets
+
+| Preset | Single column | Double column | Font (min) | Raster DPI |
+|---|---|---|---|---|
+| `nature` | 3.504 in | 7.205 in | 7 (5) pt | 600 |
+| `science` | 2.165 in | 7.244 in | 6 (5) pt | 300 |
+| `cell` | 3.346 in | 6.850 in | 6 (5) pt | 300 |
+| `ieee` | 3.500 in | 7.160 in | 8 (6) pt | 300 |
+| `acm` | 3.330 in | 7.000 in | 8 (6) pt | 300 |
+| `elsevier` | 3.543 in | 7.480 in | 8 (6) pt | 300 |
+| `springer` | 3.307 in | 6.850 in | 8 (6) pt | 300 |
+| `plos` | 3.270 in | 6.810 in | 8 (6) pt | 300 |
+
+```bash
+figspec journals          # table
+figspec journals --json   # machine readable, with source URLs
+```
+
+Adding a preset is one YAML file; see [docs/journals.md](docs/journals.md).
 
 ## Linting
 
-```bash
-figspec lint figure.yaml --journal nature
-```
+`figspec lint` builds the figure, inspects the materialised artists and reports
+findings with stable codes. An example of what it catches:
 
 ```
 figure.yaml: 1 error(s), 1 warning(s), 0 note(s)
@@ -151,39 +200,25 @@ figure.yaml: 1 error(s), 1 warning(s), 0 note(s)
           hint: set the y limit to 0, or switch the series to 'errorbar'
 ```
 
-| Code | Default | What it catches |
+| Area | Codes | Examples |
 |---|---|---|
-| `FS001` | error | text below the journal's minimum font size |
-| `FS002` | warning | hairlines that disappear in print |
-| `FS003` | warning | figure width off the journal column grid |
-| `FS004` | warning | figure taller than the page allows |
-| `CO001` | warning | line/marker colours under 3:1 contrast |
-| `CO002` | warning | colour pairs that collapse under deuteranopia/protanopia |
-| `CO003` | warning | rainbow colormaps for continuous data |
-| `CO004` | info | more distinct colours than a legend can carry |
-| `ST001` | warning | raster-only output |
-| `ST002` | error | DPI below the journal requirement |
-| `ST003` | warning | labelled series with no legend |
-| `ST004` | info | axis without a label |
-| `ST005` | info | closed frame instead of open axes |
-| `ST006` | warning | a line series with fewer than two points |
-| `ST007` | warning | more than twelve category labels on one axis |
-| `DA001` | info | missing values that render as gaps |
-| `DA002` | warning | duplicate legend labels |
-| `DA003` | warning | truncated bar-chart axis |
+| Typography | `FS001`–`FS004` | type smaller than the journal minimum, hairlines, width off the column grid |
+| Colour | `CO001`–`CO004` | contrast under 3:1, pairs that collapse under dichromacy, rainbow maps |
+| Structure | `ST001`–`ST007` | raster-only output, DPI too low, missing legend or axis labels |
+| Data | `DA001`–`DA003` | missing values, duplicate labels, truncated bar axes |
 
-`--format json` and `--format sarif` are available for tooling;
-`--ignore 'CO*'` silences a family of rules for one run.
+Reports come as text, JSON or SARIF 2.1.0, so CI and code scanning can consume
+them. The rationale for each rule is in [docs/lint-rules.md](docs/lint-rules.md).
 
-## Reproducibility
+## Reproducible builds
 
-```bash
-figspec render figure.yaml -o out
-figspec verify out/figure.figspec.json
-```
+Every build writes `<stem>.figspec.json` next to the outputs, recording the spec
+hash, every input file's SHA-256, output hashes and DPI, tool versions, and the
+git commit. A later `verify` recomputes all of it:
 
 ```
-verifying out/figure.figspec.json
+$ figspec verify figures/figure.figspec.json
+verifying figures/figure.figspec.json
   OK   schema: figspec/provenance/v1
   OK   spec: figure.yaml matches
   OK   input loss.csv: loss.csv matches
@@ -191,17 +226,9 @@ verifying out/figure.figspec.json
   OK   environment: tool versions match
 ```
 
-The manifest records:
-
-- the spec hash and file hash,
-- every data file with size and SHA-256,
-- output files with SHA-256 and raster DPI,
-- Python, figspec, matplotlib, numpy and PyYAML versions,
-- the git commit and whether the tree was dirty,
-- the lint summary.
-
-If any input, output or the spec changes, `verify` exits non-zero and names the
-mismatch. Set `SOURCE_DATE_EPOCH` to pin the manifest timestamp.
+Rendering is deterministic for PDF, SVG, PNG and EPS in the same environment;
+tests assert byte equality. What changes after a matplotlib upgrade is visible in
+the manifest rather than silent. See [docs/provenance.md](docs/provenance.md).
 
 ## CLI
 
@@ -217,8 +244,8 @@ figspec rules                      list lint rules
 figspec doctor                     environment report
 ```
 
-`figspec render --help` documents every flag; the common ones are `--journal`,
-`--format`, `--dpi`, `--strict`, `--ignore` and `--fail-on`.
+`figspec render --help` documents every flag. The full reference, including exit
+codes, is in [docs/cli.md](docs/cli.md).
 
 ## Python API
 
@@ -232,48 +259,83 @@ for output in outcome.outputs:
 outcome.close()
 ```
 
-Lower-level pieces are public too: `figspec.load_spec`, `figspec.render.build`,
-`figspec.render.export`, `figspec.lint.lint_result`,
+Lower-level pieces are public too: `figspec.load_spec`,
+`figspec.render.build`, `figspec.render.export`, `figspec.lint.lint_result` and
 `figspec.provenance.create_manifest`.
 
-## How figspec compares
+## Repository layout
 
-| | figspec | journal styles (e.g. SciencePlots) | Vega-Lite / ggplot | notebook + DVC |
+```
+src/figspec/
+├── spec/          schema, validation, YAML/JSON loader
+├── data/          CSV/TSV/JSON/NPY readers and series preparation
+├── palette/       colour science, CVD simulation, palettes
+├── journals/      preset YAML files and loader
+├── render/        style resolution, panels, plot types, deterministic export
+├── lint/          18 rules and text/JSON/SARIF reports
+├── provenance/    manifests and drift verification
+├── api.py         render / lint / verify helpers
+└── cli.py         click commands
+tests/             138 tests, ~9 s
+examples/          six lint-clean figures and their data
+docs/              MkDocs site (published to GitHub Pages)
+scripts/           asset and example-data builders
+```
+
+More detail in [docs/architecture.md](docs/architecture.md).
+
+## How it compares
+
+| | figspec | journal style sheets | Vega-Lite / ggplot | notebook + DVC |
 |---|---|---|---|---|
-| Declarative spec | ✅ | ❌ | ✅ | ❌ |
+| Declarative figure spec | ✅ | ❌ | ✅ | ❌ |
 | Journal compliance checks | ✅ | ❌ | ❌ | ❌ |
 | Colour-vision auditing | ✅ | ❌ | ❌ | ❌ |
 | Byte-reproducible output | ✅ | ❌ | partial | ❌ |
-| Provenance manifest | ✅ | ❌ | ❌ | ✅ (for data) |
-| Publication PDF/SVG | ✅ | ✅ | partial | ✅ |
+| Provenance manifest | ✅ | ❌ | ❌ | ✅ (data only) |
+| Submission PDF/SVG | ✅ | ✅ | partial | ✅ |
 
-figspec is deliberately narrow: it produces figures for papers, not dashboards,
-and it assumes matplotlib is the rendering engine rather than hiding it.
+figspec does not replace matplotlib — it gives it a schema, defaults and a build
+system. It is deliberately narrow: paper figures, not dashboards.
 
-## Project status
+## Roadmap
 
-figspec is at **v0.1.0**: the spec, renderer, linter, manifest and CLI are usable
-and covered by 138 tests. The public API may still change in minor releases
-until v1.0.
+- **v0.2** — LaTeX table export, violin and contour types, a Jupyter cell magic.
+- **v0.3** — a reusable GitHub Action, plugin hooks for custom rules and plot
+  types.
+- **v1.0** — stable API, 15+ journal presets, interoperability with experiment
+  trackers.
 
-Roadmap: LaTeX table export, violin/contour types, a Jupyter cell magic, a
-reusable GitHub Action, and a plugin hook for third-party lint rules and plot
-types. See [CHANGELOG.md](CHANGELOG.md) and the open issues.
+Ideas and votes live in the [issue tracker](https://github.com/sw176267788/FigSpec/issues).
 
 ## Contributing
 
-Contributions are welcome — the easiest first pull request is adding a journal
-preset (one YAML file) or a lint rule (one function). See
-[CONTRIBUTING.md](CONTRIBUTING.md) and [docs/contributing.md](docs/contributing.md).
+Contributions are welcome. The easiest first pull request touches one file and
+one test:
 
-```bash
-pip install -e ".[dev]"
-pytest -q
-```
+- **Add a journal preset** — one YAML file in `src/figspec/journals/data/`.
+- **Add a lint rule** — one decorated function in `src/figspec/lint/rules.py`.
+- **Add a plot type** — one function in `src/figspec/render/plots.py`.
+- **Write a recipe** — a snippet in `docs/recipes.md`.
+
+Start with [CONTRIBUTING.md](CONTRIBUTING.md) and
+[docs/contributing.md](docs/contributing.md). By participating you agree to the
+[Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Citation
 
-If figspec helps your paper, please cite it via [CITATION.cff](CITATION.cff).
+If figspec helped your research, cite it via [CITATION.cff](CITATION.cff) or:
+
+```bibtex
+@software{figspec2026,
+  title     = {figspec: declarative, publication-ready, reproducible scientific figures},
+  author    = {{The FigSpec Authors}},
+  year      = {2026},
+  version   = {0.1.0},
+  url       = {https://github.com/sw176267788/FigSpec},
+  license   = {MIT}
+}
+```
 
 ## License
 
