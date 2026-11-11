@@ -1,0 +1,27 @@
+name: science
+display_name: Science
+publisher: AAAS
+column_widths:
+  single: 2.165     # 55 mm
+  1.5: 4.724        # 120 mm
+  double: 7.244     # 184 mm
+max_height: 9.055   # 230 mm
+font:
+  family: [Helvetica, Arial, DejaVu Sans]
+  size: 6
+  min_size: 5
+  label_size: 7
+line:
+  width: 0.5
+  min_width: 0.25
+  marker_size: 2.5
+dpi:
+  raster: 300
+  lineart: 600
+formats: [pdf, svg]
+preferred_palette: okabe-ito
+max_colors: 8
+notes: >-
+  Science uses a narrow single column (55 mm).  Text must remain readable at
+  5 pt after reduction; EPS/PDF are the preferred submission formats.
+source: https://www.science.org/content/page/science-information-authors

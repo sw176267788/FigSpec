@@ -1,0 +1,27 @@
+name: elsevier
+display_name: Elsevier (generic)
+publisher: Elsevier
+column_widths:
+  single: 3.543     # 90 mm
+  1.5: 5.512        # 140 mm
+  double: 7.480     # 190 mm
+max_height: 9.449
+font:
+  family: [Arial, Helvetica, DejaVu Sans]
+  size: 8
+  min_size: 6
+  label_size: 9
+line:
+  width: 0.75
+  min_width: 0.25
+  marker_size: 3
+dpi:
+  raster: 300
+  lineart: 1000
+formats: [pdf, svg, png]
+preferred_palette: okabe-ito
+max_colors: 8
+notes: >-
+  Elsevier's generic artwork guidance: 90/140/190 mm column widths, 300 dpi for
+  halftone and 1000 dpi for combination art, minimum 6 pt text.
+source: https://www.elsevier.com/researcher/author/policies-and-guidelines/artwork-and-media-instructions

@@ -1,0 +1,27 @@
+name: plos
+display_name: PLOS ONE
+publisher: Public Library of Science
+column_widths:
+  single: 3.270     # 83 mm
+  1.5: 4.490        # 114 mm
+  double: 6.810     # 173 mm
+max_height: 9.055
+font:
+  family: [Arial, Helvetica, DejaVu Sans]
+  size: 8
+  min_size: 6
+  label_size: 9
+line:
+  width: 0.5
+  min_width: 0.25
+  marker_size: 2.5
+dpi:
+  raster: 300
+  lineart: 600
+formats: [tif, eps, pdf]
+preferred_palette: tol-bright
+max_colors: 7
+notes: >-
+  PLOS asks for 300-600 dpi TIFF or vector EPS/PDF, 83/173 mm widths and text
+  between 8 and 12 pt.  Colour must be interpretable without hue alone.
+source: https://journals.plos.org/plosone/s/figures

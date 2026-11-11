@@ -1,0 +1,28 @@
+name: nature
+display_name: Nature
+publisher: Springer Nature
+column_widths:
+  single: 3.504     # 89 mm
+  1.5: 4.724        # 120 mm
+  double: 7.205     # 183 mm
+max_height: 9.449   # 240 mm
+font:
+  family: [Arial, Helvetica, DejaVu Sans]
+  size: 7
+  min_size: 5
+  label_size: 8
+line:
+  width: 0.75
+  min_width: 0.25
+  marker_size: 3
+dpi:
+  raster: 600
+  lineart: 1200
+formats: [pdf, svg]
+preferred_palette: okabe-ito
+max_colors: 8
+notes: >-
+  Nature asks for vector artwork where possible, 300-600 dpi for raster images
+  and 600-1200 dpi for line art.  Body text is 7 pt; figures must stay legible
+  at 5 pt.  Use sans-serif fonts and avoid RGB-only distinctions.
+source: https://www.nature.com/nature/for-authors/final-submission

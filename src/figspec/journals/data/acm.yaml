@@ -1,0 +1,27 @@
+name: acm
+display_name: ACM (acmart)
+publisher: Association for Computing Machinery
+column_widths:
+  single: 3.330     # 84.6 mm
+  1.5: 5.000
+  double: 7.000     # 177.8 mm
+max_height: 9.250
+font:
+  family: [Linux Libertine, Libertine, DejaVu Serif]
+  size: 8
+  min_size: 6
+  label_size: 9
+line:
+  width: 0.6
+  min_width: 0.25
+  marker_size: 3
+dpi:
+  raster: 300
+  lineart: 600
+formats: [pdf]
+preferred_palette: tableau
+max_colors: 10
+notes: >-
+  The acmart class uses a 3.33 in column.  Vector PDF is strongly preferred and
+  text should stay at 8 pt so it matches the Libertine body font.
+source: https://www.acm.org/publications/taps/word-template-workflow

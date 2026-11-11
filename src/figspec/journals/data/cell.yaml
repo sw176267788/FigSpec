@@ -1,0 +1,27 @@
+name: cell
+display_name: Cell
+publisher: Cell Press (Elsevier)
+column_widths:
+  single: 3.346     # 85 mm
+  1.5: 4.921        # 125 mm
+  double: 6.850     # 174 mm
+max_height: 9.055
+font:
+  family: [Arial, Helvetica, DejaVu Sans]
+  size: 6
+  min_size: 5
+  label_size: 7
+line:
+  width: 0.5
+  min_width: 0.25
+  marker_size: 2.5
+dpi:
+  raster: 300
+  lineart: 600
+formats: [pdf, svg, png]
+preferred_palette: tol-muted
+max_colors: 9
+notes: >-
+  Cell Press requires 300 dpi for colour raster art and 1000 dpi for line art.
+  Panels are labelled with bold capital letters in the top-left corner.
+source: https://www.cell.com/figure-guidelines
