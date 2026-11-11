@@ -78,7 +78,7 @@ jobs:
           done
       - name: Build the gallery
         run: python -m figspec gallery examples -o build/gallery
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: example-gallery
           path: build/gallery
@@ -96,7 +96,7 @@ jobs:
           pip install build twine
       - run: python -m build
       - run: twine check dist/*
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
