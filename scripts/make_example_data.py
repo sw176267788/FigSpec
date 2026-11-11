@@ -21,7 +21,7 @@ DATA = ROOT / "examples" / "data"
 def write_rows(path: Path, header: list[str], rows: list[list[object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(header)
         for row in rows:
             writer.writerow(row)
