@@ -32,17 +32,6 @@ figspec render my-paper/figure.yaml -o figures
 - [Journal presets](journals.md) — what each preset enforces and how to add one.
 - [Lint rules](lint-rules.md) — the 18 checks and why they exist.
 - [Provenance](provenance.md) — what a manifest records and how verification works.
-- [CLI](cli.md) and [architecture](architecture.md) — for daily use and for hacking.
+- [CLI](cli.md) — commands, flags and exit codes.
 - [Recipes](recipes.md) — common figure patterns, copy-paste ready.
 - [FAQ](faq.md) — comparisons, fonts, notebooks and other loose ends.
-
-## Design principles
-
-1. **The figure is a build artefact.** Inputs are hashed, the build is
-   deterministic, and the result is verifiable months later.
-2. **Constraints belong in the tool.** Column widths and minimum font sizes are
-   data, not folklore.
-3. **Check what a reader would check.** Legibility at print size, colour
-   separation under dichromacy, and charts that do not mislead.
-4. **Stay close to matplotlib.** figspec does not hide the engine; it gives it a
-   schema, defaults and a build system.

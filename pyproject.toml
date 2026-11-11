@@ -56,7 +56,7 @@ figspec = "figspec.cli:main"
 Homepage = "https://github.com/sw176267788/FigSpec"
 Repository = "https://github.com/sw176267788/FigSpec"
 Documentation = "https://sw176267788.github.io/FigSpec/"
-Changelog = "https://github.com/sw176267788/FigSpec/blob/main/CHANGELOG.md"
+Changelog = "https://github.com/sw176267788/FigSpec/commits/main"
 "Bug Tracker" = "https://github.com/sw176267788/FigSpec/issues"
 
 [tool.hatch.version]
@@ -74,7 +74,6 @@ include = [
   "/scripts",
   "/README.md",
   "/README.zh-CN.md",
-  "/CHANGELOG.md",
   "/LICENSE",
 ]
 
