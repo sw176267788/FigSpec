@@ -1,0 +1,55 @@
+name: Bug report
+description: Something rendered wrong, crashed, or produced a confusing error.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. A minimal spec plus the output of
+        `figspec doctor` usually lets us reproduce the problem in minutes.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: The actual behaviour, including the full error message.
+      placeholder: |
+        `figspec lint figure.yaml` exits with ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec
+    attributes:
+      label: Minimal spec
+      description: The smallest `figure.yaml` that reproduces the issue.
+      render: yaml
+    validations:
+      required: true
+
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Environment
+      description: Paste the output of `figspec doctor`.
+      render: shell
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install figspec?
+      options:
+        - pip install figspec
+        - pip install -e . (source)
+        - conda / other
+    validations:
+      required: true
