@@ -1,0 +1,131 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "figspec"
+description = "Declarative, publication-ready, reproducible scientific figures."
+dynamic = ["version"]
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "The figspec Authors" }]
+keywords = [
+  "scientific-visualization",
+  "reproducibility",
+  "matplotlib",
+  "publication",
+  "figures",
+  "journal",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Visualization",
+  "Typing :: Typed",
+]
+dependencies = [
+  "matplotlib>=3.7",
+  "numpy>=1.24",
+  "PyYAML>=6.0",
+  "click>=8.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "mkdocs-material>=9.5",
+  "mypy>=1.11",
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "ruff>=0.6",
+  "twine>=5.1",
+  "types-PyYAML",
+]
+
+[project.scripts]
+figspec = "figspec.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/figspec/figspec"
+Repository = "https://github.com/figspec/figspec"
+Documentation = "https://figspec.github.io/figspec/"
+Changelog = "https://github.com/figspec/figspec/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/figspec/figspec/issues"
+
+[tool.hatch.version]
+path = "src/figspec/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/figspec"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/tests",
+  "/docs",
+  "/examples",
+  "/scripts",
+  "/README.md",
+  "/README.zh-CN.md",
+  "/CHANGELOG.md",
+  "/LICENSE",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+  "slow: marks tests that render many figures",
+]
+filterwarnings = [
+  "error::DeprecationWarning:figspec.*",
+]
+
+[tool.coverage.run]
+source = ["src/figspec"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if TYPE_CHECKING:",
+  "raise NotImplementedError",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = [
+  "E501",   # long lines are handled by the formatter where needed
+  "B008",   # click/pytest decorators legitimately call functions
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+"docs/*" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.10"
+packages = ["figspec"]
+mypy_path = "src"
+check_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+warn_unused_ignores = false
+warn_redundant_casts = false
