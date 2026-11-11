@@ -37,4 +37,4 @@ First public release.
 - 138 tests, GitHub Actions CI across three operating systems and three Python
   versions.
 
-[0.1.0]: https://github.com/figspec/figspec/releases/tag/v0.1.0
+[0.1.0]: https://github.com/sw176267788/FigSpec/releases/tag/v0.1.0

@@ -216,7 +216,7 @@ def _render_html(entries: Sequence[GalleryEntry], *, title: str, journal: str | 
 <body>
 <header>
   <h1>{html.escape(title)}</h1>
-  <p>{html.escape(subtitle)} · built with <a href="https://github.com/figspec/figspec">figspec</a></p>
+  <p>{html.escape(subtitle)} · built with <a href="https://github.com/sw176267788/FigSpec">figspec</a></p>
 </header>
 <main class="grid">
 {''.join(cards)}

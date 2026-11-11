@@ -53,11 +53,11 @@ dev = [
 figspec = "figspec.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/figspec/figspec"
-Repository = "https://github.com/figspec/figspec"
-Documentation = "https://figspec.github.io/figspec/"
-Changelog = "https://github.com/figspec/figspec/blob/main/CHANGELOG.md"
-"Bug Tracker" = "https://github.com/figspec/figspec/issues"
+Homepage = "https://github.com/sw176267788/FigSpec"
+Repository = "https://github.com/sw176267788/FigSpec"
+Documentation = "https://sw176267788.github.io/FigSpec/"
+Changelog = "https://github.com/sw176267788/FigSpec/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/sw176267788/FigSpec/issues"
 
 [tool.hatch.version]
 path = "src/figspec/_version.py"

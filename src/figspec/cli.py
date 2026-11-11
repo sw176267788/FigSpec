@@ -230,7 +230,7 @@ def verify(ctx: click.Context, manifest: Path, as_json: bool) -> int:
 
 _STARTER_SPEC = """\
 # A figspec figure definition.  Run `figspec render figure.yaml` to build it.
-# Reference: https://github.com/figspec/figspec/blob/main/docs/spec-reference.md
+# Reference: https://github.com/sw176267788/FigSpec/blob/main/docs/spec-reference.md
 version: 1
 
 meta:

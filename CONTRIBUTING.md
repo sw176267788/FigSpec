@@ -6,7 +6,7 @@ this page lists the rules that apply to every change.
 ## Quick start
 
 ```bash
-git clone https://github.com/figspec/figspec
+git clone https://github.com/sw176267788/FigSpec
 cd figspec
 pip install -e ".[dev]"
 pytest -q

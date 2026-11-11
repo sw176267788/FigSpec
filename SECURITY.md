@@ -10,7 +10,8 @@
 ## Reporting a vulnerability
 
 Please **do not** open a public issue. Report privately through GitHub's
-"Security → Report a vulnerability" form, or by email to `security@figspec.dev`.
+[Security → Report a vulnerability](https://github.com/sw176267788/FigSpec/security/advisories/new)
+form.
 
 Include:
 

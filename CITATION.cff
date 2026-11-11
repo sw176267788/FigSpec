@@ -1,25 +1,22 @@
 cff-version: 1.2.0
 message: "If figspec helped your research, please cite it using this metadata."
 title: "figspec: declarative, publication-ready, reproducible scientific figures"
+version: 0.1.0
+date-released: 2026-11-11
+type: software
+license: MIT
 abstract: >-
   figspec compiles a small YAML description of a figure into journal-compliant
   PDF, SVG and raster output. It bundles journal column grids and minimum type
   sizes, lints figures for legibility and colour-vision accessibility, and
   records a provenance manifest so that a figure can be verified long after it
   was built.
-type: software
-license: MIT
-version: 0.1.0
-date-released: 2026-11-11
-repository-code: "https://github.com/figspec/figspec"
-url: "https://figspec.github.io/figspec/"
+repository-code: "https://github.com/sw176267788/FigSpec"
+url: "https://sw176267788.github.io/FigSpec/"
 keywords:
   - scientific-visualization
   - reproducibility
   - matplotlib
   - publication-figures
 authors:
-  - family-names: "figspec contributors"
-    given-names: ""
-    # Replace with your own name, ORCID and affiliation before publishing.
-    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - name: "The figspec Authors"

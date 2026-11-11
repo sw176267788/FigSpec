@@ -38,9 +38,11 @@ may remove, edit or reject comments, commits, code, issues and pull requests tha
 do not align with this code, and will communicate reasons when appropriate.
 
 Instances of abusive, harassing or otherwise unacceptable behaviour may be
-reported to the maintainers at `conduct@figspec.dev`. All complaints will be
-reviewed promptly and fairly. Maintainers are obligated to respect the privacy
-and security of the reporter.
+reported privately to the maintainers through the repository's
+[Security → Report a vulnerability](https://github.com/sw176267788/FigSpec/security/advisories/new)
+form, or by contacting the maintainer through their GitHub profile. All
+complaints will be reviewed promptly and fairly. Maintainers are obligated to
+respect the privacy and security of the reporter.
 
 Consequences escalate with severity and repetition: a private warning, a
 temporary ban from interaction, then a permanent ban from the project.

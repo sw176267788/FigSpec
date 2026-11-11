@@ -148,7 +148,7 @@ class LintReport:
                         "driver": {
                             "name": "figspec",
                             "version": __version__,
-                            "informationUri": "https://github.com/figspec/figspec",
+                            "informationUri": "https://github.com/sw176267788/FigSpec",
                             "rules": rules,
                         }
                     },

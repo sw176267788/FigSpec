@@ -48,8 +48,8 @@ body:
     attributes:
       label: How did you install figspec?
       options:
-        - pip install figspec
-        - pip install -e . (source)
-        - conda / other
+        - pip install "git+https://github.com/sw176267788/FigSpec.git"
+        - pip install -e . (from a clone)
+        - conda or another environment
     validations:
       required: true
