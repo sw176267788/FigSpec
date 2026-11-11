@@ -27,12 +27,14 @@ figspec render my-paper/figure.yaml -o figures
 ## Where to go next
 
 - [Quickstart](quickstart.md) — from install to a compiled figure in two minutes.
+- [Gallery](gallery.md) — six complete figures with their specs.
 - [Spec reference](spec-reference.md) — every key, every default.
 - [Journal presets](journals.md) — what each preset enforces and how to add one.
 - [Lint rules](lint-rules.md) — the 18 checks and why they exist.
 - [Provenance](provenance.md) — what a manifest records and how verification works.
 - [CLI](cli.md) and [architecture](architecture.md) — for daily use and for hacking.
 - [Recipes](recipes.md) — common figure patterns, copy-paste ready.
+- [FAQ](faq.md) — comparisons, fonts, notebooks and other loose ends.
 
 ## Design principles
 

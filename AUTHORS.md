@@ -1,25 +1,18 @@
 # Authors
 
-figspec is maintained by its contributors. `LICENSE`, `CITATION.cff` and
-`pyproject.toml` currently use the neutral entity name **The figspec Authors**;
-replace it with your own name if you prefer a personal attribution.
+figspec is maintained by its contributors.
 
-## Maintainer
-
-- **Maintainer** — project lead, design and implementation.
-  Add your name here, or remove this section if you publish under the project
-  name only.
+The copyright holder and the citation author are recorded as **The figspec
+Authors** — see [LICENSE](LICENSE) and [CITATION.cff](CITATION.cff).
+Contributions are recorded in the git history.
 
 ## Contributors
 
-Contributions are recorded in the git history. Add yourself here when your first
-pull request is merged:
+- The figspec Authors
 
-- *Name* — area of contribution
+## Attribution
 
-## Attribution checklist
-
-If you fork figspec into your own project, update:
+If you fork this project, update the following to your own details:
 
 1. `LICENSE` — copyright holder.
 2. `CITATION.cff` — `authors` (and optionally an ORCID).

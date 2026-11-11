@@ -12,6 +12,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
 [![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)](CHANGELOG.md)
 
+[English](README.md) · [简体中文](README.zh-CN.md)
+
 </div>
 
 A figure is a build artefact, but most labs still treat it as a file somebody
