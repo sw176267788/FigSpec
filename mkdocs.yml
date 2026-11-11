@@ -1,0 +1,60 @@
+site_name: figspec
+site_description: Declarative, publication-ready, reproducible scientific figures.
+site_url: https://figspec.github.io/figspec/
+repo_url: https://github.com/figspec/figspec
+repo_name: figspec/figspec
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2026 The figspec Authors
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - content.action.edit
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Spec reference: spec-reference.md
+  - Journal presets: journals.md
+  - Lint rules: lint-rules.md
+  - Provenance: provenance.md
+  - CLI: cli.md
+  - Recipes: recipes.md
+  - Architecture: architecture.md
+  - Contributing: contributing.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search

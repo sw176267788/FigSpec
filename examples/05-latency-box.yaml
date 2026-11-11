@@ -1,0 +1,35 @@
+version: 1
+
+meta:
+  title: Decoding latency by optimisation
+  description: >-
+    Distribution of per-token latency over 40 runs for five decoding
+    configurations. The y axis is logarithmic because the improvements are
+    multiplicative.
+  tags: [inference, systems]
+
+figure:
+  journal: cell
+  layout: single
+  formats: [pdf, svg, png]
+
+style:
+  palette: tol-muted
+
+axes:
+  x:
+    label: Decoding strategy
+  y:
+    label: Latency (ms)
+    scale: log
+
+legend:
+  show: false
+
+series:
+  - type: box
+    data: data/latency.csv
+    x: method
+    y: latency_ms
+    params:
+      x_rotation: 28

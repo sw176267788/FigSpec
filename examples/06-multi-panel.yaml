@@ -1,0 +1,78 @@
+version: 1
+
+meta:
+  title: Four-panel model summary
+  description: >-
+    Loss curves, a backbone comparison, the depth/patch-size ablation and the
+    scaling fit combined into one journal-width figure.
+  tags: [multi-panel, deep-learning]
+
+figure:
+  journal: acm
+  layout: double
+  formats: [pdf, svg, png]
+  grid: [2, 2]
+
+style:
+  palette: okabe-ito
+
+panels:
+  - title: (a)
+    axes:
+      x: {label: Epoch}
+      y: {label: Loss}
+    series:
+      - type: line
+        data: data/loss.csv
+        x: epoch
+        y: [train, val]
+        labels: [Train, Validation]
+        marker: o
+        markersize: 1.8
+
+  - title: (b)
+    axes:
+      x: {label: Backbone}
+      y: {label: Top-1 (%)}
+    series:
+      - type: bar
+        data: data/benchmarks.csv
+        x: model
+        y: accuracy
+        error: std
+        width: 0.6
+        params:
+          x_rotation: 40
+
+  - title: (c)
+    axes:
+      x: {label: Patch size}
+      y: {label: Depth}
+    series:
+      - type: heatmap
+        cmap: cividis
+        matrix:
+          - [68.2, 72.4, 74.1]
+          - [74.9, 79.2, 80.6]
+          - [76.8, 81.0, 82.3]
+        row_labels: ["d=6", "d=12", "d=24"]
+        col_labels: ["p=8", "p=16", "p=32"]
+        annotate: true
+
+  - title: (d)
+    axes:
+      x: {label: Parameters (M), scale: log}
+      y: {label: Loss, scale: log}
+    series:
+      - type: scatter
+        data: data/scaling.csv
+        x: params_m
+        y: loss
+        label: Measured
+        markersize: 3
+      - type: line
+        data: data/scaling.csv
+        x: params_m
+        y: fit
+        label: Fit
+        linestyle: "--"

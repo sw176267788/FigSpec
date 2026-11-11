@@ -1,0 +1,201 @@
+method,latency_ms
+Baseline,43.81
+Baseline,42.08
+Baseline,40.72
+Baseline,31.04
+Baseline,43.18
+Baseline,31.77
+Baseline,45.73
+Baseline,44.09
+Baseline,45.29
+Baseline,45.28
+Baseline,42.50
+Baseline,38.45
+Baseline,39.52
+Baseline,49.13
+Baseline,38.23
+Baseline,39.89
+Baseline,37.59
+Baseline,38.53
+Baseline,39.52
+Baseline,42.28
+Baseline,39.58
+Baseline,39.29
+Baseline,38.07
+Baseline,41.44
+Baseline,34.89
+Baseline,41.26
+Baseline,47.98
+Baseline,37.40
+Baseline,40.78
+Baseline,57.49
+Baseline,36.40
+Baseline,33.75
+Baseline,38.95
+Baseline,50.93
+Baseline,52.34
+Baseline,35.43
+Baseline,43.90
+Baseline,41.02
+Baseline,38.21
+Baseline,32.46
+KV cache,31.10
+KV cache,24.80
+KV cache,28.50
+KV cache,27.77
+KV cache,34.42
+KV cache,31.67
+KV cache,23.94
+KV cache,26.65
+KV cache,31.14
+KV cache,23.43
+KV cache,26.24
+KV cache,28.26
+KV cache,22.65
+KV cache,23.71
+KV cache,22.41
+KV cache,28.46
+KV cache,25.71
+KV cache,30.74
+KV cache,27.88
+KV cache,29.45
+KV cache,27.23
+KV cache,30.10
+KV cache,27.16
+KV cache,24.44
+KV cache,31.69
+KV cache,30.93
+KV cache,36.10
+KV cache,27.03
+KV cache,25.65
+KV cache,23.12
+KV cache,17.31
+KV cache,23.50
+KV cache,29.15
+KV cache,24.73
+KV cache,20.14
+KV cache,29.58
+KV cache,25.62
+KV cache,26.33
+KV cache,26.11
+KV cache,27.06
+FlashAttention,22.23
+FlashAttention,17.05
+FlashAttention,20.44
+FlashAttention,19.76
+FlashAttention,24.07
+FlashAttention,18.55
+FlashAttention,25.56
+FlashAttention,22.59
+FlashAttention,25.52
+FlashAttention,19.30
+FlashAttention,23.13
+FlashAttention,21.94
+FlashAttention,17.55
+FlashAttention,20.35
+FlashAttention,19.89
+FlashAttention,18.70
+FlashAttention,19.15
+FlashAttention,17.67
+FlashAttention,19.86
+FlashAttention,21.86
+FlashAttention,19.13
+FlashAttention,17.41
+FlashAttention,23.81
+FlashAttention,20.09
+FlashAttention,21.07
+FlashAttention,20.42
+FlashAttention,19.68
+FlashAttention,22.57
+FlashAttention,19.71
+FlashAttention,21.07
+FlashAttention,17.66
+FlashAttention,17.25
+FlashAttention,20.04
+FlashAttention,26.41
+FlashAttention,21.46
+FlashAttention,26.48
+FlashAttention,22.17
+FlashAttention,22.17
+FlashAttention,19.58
+FlashAttention,20.94
+INT8,17.61
+INT8,16.37
+INT8,13.17
+INT8,13.42
+INT8,16.67
+INT8,13.35
+INT8,15.86
+INT8,12.73
+INT8,15.31
+INT8,17.05
+INT8,15.70
+INT8,14.62
+INT8,14.44
+INT8,14.06
+INT8,14.16
+INT8,16.36
+INT8,16.31
+INT8,14.91
+INT8,12.21
+INT8,13.34
+INT8,14.72
+INT8,14.29
+INT8,12.07
+INT8,15.38
+INT8,19.40
+INT8,12.26
+INT8,14.31
+INT8,17.25
+INT8,13.51
+INT8,13.52
+INT8,14.49
+INT8,15.20
+INT8,13.52
+INT8,15.97
+INT8,11.30
+INT8,15.36
+INT8,14.84
+INT8,13.93
+INT8,14.88
+INT8,14.28
+Speculative,11.03
+Speculative,8.89
+Speculative,9.35
+Speculative,7.96
+Speculative,8.21
+Speculative,9.13
+Speculative,7.80
+Speculative,8.49
+Speculative,8.02
+Speculative,8.86
+Speculative,9.53
+Speculative,10.53
+Speculative,7.45
+Speculative,9.18
+Speculative,10.43
+Speculative,11.09
+Speculative,11.13
+Speculative,7.91
+Speculative,8.84
+Speculative,10.06
+Speculative,10.52
+Speculative,9.72
+Speculative,9.70
+Speculative,9.68
+Speculative,8.57
+Speculative,9.58
+Speculative,10.36
+Speculative,9.03
+Speculative,10.82
+Speculative,6.68
+Speculative,9.04
+Speculative,11.53
+Speculative,10.44
+Speculative,11.18
+Speculative,9.57
+Speculative,8.16
+Speculative,8.84
+Speculative,11.28
+Speculative,7.54
+Speculative,8.38

@@ -1,0 +1,36 @@
+version: 1
+
+meta:
+  title: Loss follows a power law in model size
+  description: >-
+    Validation loss against parameter count on log-log axes. The fitted
+    exponent is -0.072, consistent with published scaling results.
+  tags: [scaling-laws, deep-learning]
+
+figure:
+  journal: science
+  layout: "1.5"
+  formats: [pdf, svg, png]
+
+axes:
+  x:
+    label: Parameters (M)
+    scale: log
+    limits: [4, 1600]
+  y:
+    label: Validation loss
+    scale: log
+
+series:
+  - type: scatter
+    data: data/scaling.csv
+    x: params_m
+    y: loss
+    label: Measured
+    markersize: 4
+  - type: line
+    data: data/scaling.csv
+    x: params_m
+    y: fit
+    label: Power-law fit
+    linestyle: "--"

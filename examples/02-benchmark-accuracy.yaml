@@ -1,0 +1,34 @@
+version: 1
+
+meta:
+  title: ImageNet top-1 accuracy across backbones
+  description: >-
+    Six backbone families at comparable training budgets, drawn as a dot plot
+    with the standard deviation over three seeds. Position encodes the value,
+    so the axis can be truncated without exaggerating the differences.
+  tags: [benchmark, vision]
+
+figure:
+  journal: ieee
+  layout: single
+  formats: [pdf, svg, png]
+
+style:
+  palette: tol-bright
+
+axes:
+  x:
+    label: Backbone
+  y:
+    label: Top-1 accuracy (%)
+    limits: [72, 84]
+
+series:
+  - type: errorbar
+    data: data/benchmarks.csv
+    x: model
+    y: accuracy
+    error: std
+    markersize: 4
+    params:
+      x_rotation: 32
