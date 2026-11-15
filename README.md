@@ -229,4 +229,4 @@ Lower-level entry points: `figspec.load_spec`, `figspec.render.build`,
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE)
